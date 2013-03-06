@@ -1,0 +1,5 @@
+class Location < ActiveRecord::Base
+  belongs_to :notebook
+  attr_accessible :loc_acronym
+  validates_presence_of :loc_acronym, :message => "sollte schon eingetragen werden! o_O "
+end

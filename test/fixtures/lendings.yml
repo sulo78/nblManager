@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  lender_name: MyString
+  lender_surname: MyString
+  lender_phone: MyString
+  department: MyString
+  room_nr: MyString
+  accessories: MyText
+  comment: MyText
+  notebook_id: 1
+  user_id: 1
+
+two:
+  lender_name: MyString
+  lender_surname: MyString
+  lender_phone: MyString
+  department: MyString
+  room_nr: MyString
+  accessories: MyText
+  comment: MyText
+  notebook_id: 1
+  user_id: 1

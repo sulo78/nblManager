@@ -1,0 +1,33 @@
+<% @title = "Notebooks verwalten" %>
+
+<h2>Liste der Notebooks</h2>
+
+<table>
+  <tr>
+    <th>Notebookname</th>
+    <th>Hersteller</th>
+    <th>Modell</th>
+    <th>Service-Tag</th>
+    <th>Pool</th>
+    <th>Standort</th>
+    <th></th>
+    <th></th>
+    <th></th>	
+  </tr>
+  <% @notebooks.each do |nb| %>
+    <tr>
+      <td><%= nb.nb_name %></td>
+      <td><%= nb.manufactor %></td>
+      <td><%= nb.nb_type %></td>
+      <td><%= nb.serial %></td>
+      <td><%= nb.pool.pool_name %></td>
+      <td><%= nb.location.loc_acronym %></td>
+      <td>(<%= link_to "ändern", edit_notebook_path(nb) %> |</td>
+      <td><%= link_to "löschen", nb, :confirm => "Wollen Sie dieses Notebook wirklich löschen?", method: :delete %>)</td>
+    </tr>
+  <% end %>  
+</table>
+
+<br />
+
+<%= link_to "Notebook hinzufügen", new_notebook_path %>

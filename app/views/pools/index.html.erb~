@@ -1,0 +1,22 @@
+<% @title = "Pools verwalten" %>
+
+<h2>Liste der Pools</h2>
+
+<table>
+  <tr>
+    <th>Pool</th>
+    <th></th>
+    <th></th>	
+  </tr>
+  <% @pools.each do |pool| %>
+    <tr>
+      <td><%= pool.pool_name %></td>
+      <td>(<%= link_to "ändern", edit_pool_path(pool) %> |</td>
+      <td><%= link_to "löschen", pool, :confirm => "Wollen Sie diesen Pool wirklich löschen?", method: :delete %>)</td>
+    </tr>
+  <% end %>  
+</table>
+
+<br />
+
+<%= link_to "Pool hinzufügen", new_pool_path %>

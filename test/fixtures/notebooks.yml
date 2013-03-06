@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  manufactor: MyString
+  nb_type: MyString
+  serial: MyString
+  nb_name: MyString
+  cpu: MyString
+  ram: 1
+  comment: MyText
+  pool_id: 1
+  location_id: 1
+
+two:
+  manufactor: MyString
+  nb_type: MyString
+  serial: MyString
+  nb_name: MyString
+  cpu: MyString
+  ram: 1
+  comment: MyText
+  pool_id: 1
+  location_id: 1
