@@ -1,2 +1,69 @@
-<h1>Notebooks#edit</h1>
-<p>Find me in app/views/notebooks/edit.html.erb</p>
+<% @title = "Notebook aktualisieren" %>
+
+<h2>Notebook aktualisieren</h2>
+
+<%= form_for @notebook do |f| %>
+  <% if @notebook.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@notebook.errors.count, "error") %> prohibited this notebook from being edited:</h2>
+
+      <ul>
+      <% @notebook.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="select">
+    <table>
+    	<tr>
+    		<th><%= f.label :pool_id, "Pool:" %></th>
+    		<th><%= f.label :location_id, "Standort:" %></th>
+    	</tr>
+    	<tr>
+    		<td><%= f.collection_select :pool_id, Pool.all, :id, :pool_name %></td>
+    		<td><%= f.collection_select :location_id, Location.all, :id, :loc_acronym %></td>
+    	</tr>
+    </table><br />
+  </div>
+
+  <div class="field">
+    <%= f.label :nb_name, "Notebookname:" %><br />
+    <%= f.text_field :nb_name %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :manufactor, "Hersteller:" %><br />
+    <%= f.text_field :manufactor %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :nb_type, "Modell:" %><br />
+    <%= f.text_field :nb_type %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :serial, "Service-Tag:" %><br />
+    <%= f.text_field :serial %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :cpu, "Prozessor:" %><br />
+    <%= f.text_field :cpu %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :ram, "Arbeitsspeicher (GB):" %><br />
+    <%= f.number_field :ram %>
+  </div>  
+  
+  <div class="field">
+    <%= f.label :comment, "Kommentar:" %><br />
+    <%= f.text_area :comment %><br /><br />
+  </div>  
+  
+  <div class="actions">
+    <%= f.submit "Notebook aktualisieren" %>
+  </div>
+<% end %>
