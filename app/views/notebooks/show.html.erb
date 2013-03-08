@@ -1,2 +1,55 @@
-<h1>Notebooks#show</h1>
-<p>Find me in app/views/notebooks/show.html.erb</p>
+<h2><%= t("text.Notebook_Details") %></h2>
+
+<div class="details">
+  <table>
+    <tr>
+      <th><h3><%= @notebook.nb_name %></h3></th>
+    </tr>
+
+    <tr>
+      <th>Service-Tag:</th>
+      <td><b><%= @notebook.serial %></b></td>
+    </tr>
+    
+    <tr><td></br></td></tr>
+    
+    <tr>
+      <th>Pool:</th>
+      <% pool_name = @notebook.pool.try(:pool_name) %>
+      <td><%= pool_name %></td>
+    </tr>
+    
+    <tr>
+      <th>Standort:</th>
+      <% loc_name = @notebook.location.try(:loc_acronym) %>
+      <td><%= loc_name %></td>
+    </tr>
+
+    <tr>
+      <th>Hersteller:</th>
+      <td><%= @notebook.manufactor %></td>
+    </tr>
+  
+    <tr>
+      <th>Modell:</th>
+      <td><%= @notebook.nb_type %></td>
+    </tr>
+  
+    <tr>
+      <th>Prozessor:</th>
+      <td><%= @notebook.cpu %></td>
+    </tr>
+  
+    <tr>
+      <th>Arbeitsspeicher:</th>
+      <td><%= @notebook.ram %><% if @notebook.ram? %> GB<% end %></td>
+    </tr>
+  </table>
+</div> 
+
+<div class="comment">
+  <p>
+    <b>Kommentar:</b></br>
+    <%= @notebook.comment %>
+  </p>	
+</div>
