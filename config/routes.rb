@@ -1,5 +1,9 @@
 Nblmanager::Application.routes.draw do
 
+  get "users/index"
+
+  get "users/new"
+
 # locations_controller
 
 #  get "locations" => "locations#index", :as => "locations"		#Standortliste, "views/locations/index.html.erb"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304163739) do
+ActiveRecord::Schema.define(:version => 20130310162857) do
 
   create_table "lendings", :force => true do |t|
     t.string   "lender_name"
@@ -59,9 +59,9 @@ ActiveRecord::Schema.define(:version => 20130304163739) do
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "password_digest"
-    t.boolean  "is_admin"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.boolean  "is_admin",        :default => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
 end
