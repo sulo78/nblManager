@@ -4,10 +4,10 @@ class User < ActiveRecord::Base
   has_secure_password 
 
   #Accessible attributes
-  attr_accessible :is_admin, :password_digest, :username
+  attr_accessible :password, :password_confirmation, :username
   
   #Validations
-  validates_presence_of :username, :password_digest
+  validates_presence_of :username, :password
   validates_uniqueness_of :username 
   
 end

@@ -1,8 +1,5 @@
 Nblmanager::Application.routes.draw do
 
-  get "users/index"
-
-  get "users/new"
 
 # locations_controller
 
@@ -23,7 +20,7 @@ Nblmanager::Application.routes.draw do
 #  delete "/pools/:id" => "pools#destroy"				#Pool löschen
 
   # use 'resources' for RESTful routes
-  resources :locations, :pools, :notebooks
+  resources :locations, :pools, :notebooks, :users
 
   
 end  #end of routes
