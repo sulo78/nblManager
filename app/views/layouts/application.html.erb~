@@ -7,6 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="user_nav">
+    <% if current_user %>
+      Angemeldet als <%= current_user.username %> |
+      <%= link_to "abmelden", logout_path %>
+    <% else %>
+     Bitte melde dich zuerst an!
+    <% end %>
+  </div>
+  
   <div id="container">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>

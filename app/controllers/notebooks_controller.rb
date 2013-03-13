@@ -1,6 +1,9 @@
 # encoding: utf-8
 class NotebooksController < ApplicationController
 
+# Only Admin has access to this controller - method require_admin at the bottom...
+  before_filter :require_admin
+
 # HTTP-GET-Methoden (views)
 
 # GET /notebooks/index
@@ -50,6 +53,15 @@ class NotebooksController < ApplicationController
     @notebook = Notebook.find(params[:id])
       @notebook.destroy
         redirect_to notebooks_path, :notice => "Eintrag wurde erfolgreich glöscht"
+  end
+  
+# only admin can use this controller
+private
+
+  def require_admin
+    unless admin_signed_in?
+      redirect_to login_path, :alert => "Bitte als Admin anmelden!"
+    end
   end
   
 end  #end of class
