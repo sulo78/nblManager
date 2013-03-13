@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
     user = User.find_by_username(params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to bookmarks_path, notice: "Sie haben sich angemeldet!"
+      redirect_to notebooks_path, notice: "Sie haben sich angemeldet!"
     else
-      flash.now.alert = "Fehlerhafte E-Mail-Adresse oder Passwort"
+      flash.now.alert = "Fehler in Benutzername oder Passwort"
       render "new"
     end
   end

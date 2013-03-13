@@ -19,8 +19,11 @@ Nblmanager::Application.routes.draw do
 #  put "/pools/:id" => "pools#update"					#Pool aktualisieren
 #  delete "/pools/:id" => "pools#destroy"				#Pool löschen
 
+  get "logout" => "sessions#destroy", :as => "logout"
+  get "login" => "sessions#new", :as => "login"
+
   # use 'resources' for RESTful routes
-  resources :locations, :pools, :notebooks, :users
+  resources :locations, :pools, :notebooks, :users, :sessions
 
   
 end  #end of routes

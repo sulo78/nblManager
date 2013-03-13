@@ -1,8 +1,5 @@
 Nblmanager::Application.routes.draw do
 
-  get "users/index"
-
-  get "users/new"
 
 # locations_controller
 
@@ -21,6 +18,9 @@ Nblmanager::Application.routes.draw do
 #  get "pools/:id/edit" => "pools#edit", :as => "edit_pool"		#Pool bearbeiten "views/pools/edit.html.erb"
 #  put "/pools/:id" => "pools#update"					#Pool aktualisieren
 #  delete "/pools/:id" => "pools#destroy"				#Pool löschen
+
+  get "logout" => "sessions#destroy", :as => "logout"
+  get "login" => "sessions#new", :as => "login"
 
   # use 'resources' for RESTful routes
   resources :locations, :pools, :notebooks, :users

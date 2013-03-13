@@ -24,7 +24,7 @@ class NotebooksController < ApplicationController
   def create
     @notebook = Notebook.new(params[:notebook])
       if @notebook.save
-        redirect_to notebooks_path, :message => "Notebook erfolgreich gespeichert!"   	
+        redirect_to notebooks_path, :notice => "Notebook erfolgreich gespeichert!"   	
       else
       	render "new"
       end
@@ -39,7 +39,7 @@ class NotebooksController < ApplicationController
   def update
     @notebook = Notebook.find(params[:id])
       if @notebook.update_attributes(params[:notebook])
-        redirect_to notebooks_path, :message => "Notebook erfolgreich geändert"
+        redirect_to notebooks_path, :notice => "Notebook erfolgreich geändert"
       else
       	render "edit"
       end
@@ -49,7 +49,7 @@ class NotebooksController < ApplicationController
   def destroy
     @notebook = Notebook.find(params[:id])
       @notebook.destroy
-        redirect_to notebooks_path, :message => "Eintrag wurde erfolgreich glöscht"
+        redirect_to notebooks_path, :notice => "Eintrag wurde erfolgreich glöscht"
   end
   
 end  #end of class

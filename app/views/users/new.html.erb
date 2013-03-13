@@ -1,32 +1,34 @@
+<% @title = "Neuer Benutzer" %>
+
 <h2>Neuen Benutzer anlegen</h2>
 
 <%= form_for @user do |f| %>
-	<% if @user.errors.any? %>
-		<ul>
-			<% @user.errors.full_messages.each do |msg| %>
-				<li><%= msg %></li>
-			<% end %>
-		</ul>
-	<% end %>
+  <% if @user.errors.any? %>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+	<li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>		
+  </div>
 
 
-	<p>
-		<%= f.label :username %>
-		<%= f.text_field :username %>
-	</p>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>	
+  </div>
 
-	<p>
-		<%= f.label :password %>
-		<%= f.password_field :password %>
-	</p>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>	
+  </div>
 
-	<p>
-		<%= f.label :password_confirmation %>
-		<%= f.password_field :password_confirmation %>
-	</p>	
-
-	<p>
-		<%= f.submit %>
-	</p>
+  <div class="action">
+    <%= f.submit %>	
+  </div>
 
 <% end %>
