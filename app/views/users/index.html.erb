@@ -8,10 +8,12 @@
     <th></th>
   </tr>
   <% @users.each do |u| %>
-    <tr>
-      <td><%= u.username %></td>
-      <td>(<%= link_to "löschen", u, :confirm => "Wollen Sie diesen Benutzer wirklich löschen?", method: :delete %>)</td>
-    </tr>
+    <% if u.is_admin == false %> 
+      <tr>
+        <td><%= u.username %></td>
+        <td>(<%= link_to "löschen", u, :confirm => "Wollen Sie diesen Benutzer wirklich löschen?", method: :delete %>)</td>
+      </tr>
+    <% end %>
   <% end %>  
 </table>
 

@@ -6,7 +6,11 @@ class SessionsController < ApplicationController
     user = User.find_by_username(params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to notebooks_path, notice: "Sie haben sich angemeldet!"
+      if admin_signed_in?
+        redirect_to notebooks_path
+      else
+        redirect_to lendings_path
+      end
     else
       flash.now.alert = "Fehler in Benutzername oder Passwort"
       render "new"
@@ -15,6 +19,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to login_path, notice: "Sie haben sich abgemeldet!"
+    redirect_to login_path, notice: "Du hast dich abgemeldet!"
   end
 end

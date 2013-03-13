@@ -1,6 +1,10 @@
 Nblmanager::Application.routes.draw do
 
 
+  get "lendings/index"
+
+  get "lendings/new"
+
 # locations_controller
 
 #  get "locations" => "locations#index", :as => "locations"		#Standortliste, "views/locations/index.html.erb"
@@ -23,7 +27,7 @@ Nblmanager::Application.routes.draw do
   get "login" => "sessions#new", :as => "login"
 
   # use 'resources' for RESTful routes
-  resources :locations, :pools, :notebooks, :users
+  resources :locations, :pools, :notebooks, :users, :sessions
 
   
 end  #end of routes

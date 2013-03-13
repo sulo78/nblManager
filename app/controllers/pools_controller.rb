@@ -1,6 +1,9 @@
 # encoding: utf-8
 class PoolsController < ApplicationController
 
+# Only Admin has access to this controller, find :require_admin at application_controller
+  before_filter :require_admin
+
 # HTTP-GET-Methoden (views)
 
 # GET /pools/index

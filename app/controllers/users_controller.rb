@@ -1,6 +1,9 @@
 # encoding: utf-8
 class UsersController < ApplicationController
 
+# Only Admin has access to this controller, find :require_admin in application_controller
+  before_filter :require_admin
+
 # HTTP-GET-Methoden (views)
 
 # GET /users/
