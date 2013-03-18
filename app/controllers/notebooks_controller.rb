@@ -1,8 +1,11 @@
 # encoding: utf-8
 class NotebooksController < ApplicationController
 
-# Only Admin has access to this controller, find :require_admin at application_controller
-  before_filter :require_admin
+# Only Admin has access to new, edit, create, update, destroy
+  before_filter :require_admin, :only => [:new, :edit, :create, :update, :destroy]
+
+# Only signed in Users can access index
+  before_filter :require_login, :only => [:index, :show]
 
 # HTTP-GET-Methoden (views)
 

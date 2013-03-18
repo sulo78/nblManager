@@ -1,9 +1,13 @@
 Nblmanager::Application.routes.draw do
 
 
-  get "lendings/index"
+  get "dashboard/admin_dashboard"
 
-  get "lendings/new"
+  get "dashboard/user_dashboard"
+
+#  get "lendings/index"
+
+#  get "lendings/new"
 
 # locations_controller
 

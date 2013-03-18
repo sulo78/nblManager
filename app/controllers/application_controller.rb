@@ -17,6 +17,12 @@ class ApplicationController < ActionController::Base
     current_user.present? && current_user.is_admin?
   end
   
+  def require_login
+    unless user_signed_in?
+      redirect_to login_path, :alert => "Anmelden Digger!!!"
+    end
+  end
+  
   def require_admin
     unless admin_signed_in?
       redirect_to login_path, :alert => "Bitte als Admin anmelden!"
