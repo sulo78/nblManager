@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130310162857) do
+ActiveRecord::Schema.define(:version => 20130318141324) do
 
   create_table "lendings", :force => true do |t|
     t.string   "lender_name"
