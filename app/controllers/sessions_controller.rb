@@ -7,9 +7,9 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       if admin_signed_in?
-        redirect_to notebooks_path
+        redirect_to notebooks_path, :notice => "Comtrya!"
       else
-        redirect_to lendings_path
+        redirect_to lendings_path, :notice => "Comtrya!"
       end
     else
       flash.now.alert = "Fehler in Benutzername oder Passwort"

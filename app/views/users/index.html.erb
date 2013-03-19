@@ -2,7 +2,7 @@
 
 <h2>Liste der Benutzer</h2>
 
-<table>
+<table class="table">
   <tr>
     <th>Username</th>
     <th></th>
@@ -11,7 +11,7 @@
     <% if u.is_admin == false %> 
       <tr>
         <td><%= u.username %></td>
-        <td>(<%= link_to "löschen", u, :confirm => "Wollen Sie diesen Benutzer wirklich löschen?", method: :delete %>)</td>
+        <td><%= link_to "<i class=\"icon-remove\"></i>".html_safe, u, :class => "btn btn-small btn-danger", :confirm => "Wollen Sie diesen Benutzer wirklich löschen?", method: :delete %></td>
       </tr>
     <% end %>
   <% end %>  
@@ -19,4 +19,4 @@
 
 <br />
 
-<%= link_to "Benutzer hinzufügen", new_user_path %>
+<%= link_to "Benutzer hinzufügen", new_user_path, :class => "btn btn-primary" %>

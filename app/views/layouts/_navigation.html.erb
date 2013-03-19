@@ -1,0 +1,25 @@
+  <div id="user_nav">
+    <% if current_user %>
+      Angemeldet als <%= current_user.username %> |
+      <%= link_to "abmelden", logout_path %>
+    <% else %>
+     Bitte melde dich zuerst an!
+    <% end %>
+  </div>
+<h3>lendingManager</h3>
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+  <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+</a>
+
+<% if admin_signed_in? %>  
+  <div class="nav-collapse">
+    <ul class="nav">
+      <li><%= link_to "Notebooks", notebooks_path %></li>
+      <li><%= link_to "Pools", pools_path %></li>
+      <li><%= link_to "Standorte", locations_path %></li>
+      <li><%= link_to "Benutzer", users_path %></li>
+    </ul>
+  </div>
+<% end %>

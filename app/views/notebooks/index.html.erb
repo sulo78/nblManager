@@ -2,7 +2,7 @@
 
 <h2>Liste der Notebooks</h2>
 
-<table>
+<table class = "table">
   <tr>
     <th>Notebookname</th>
     <th>Hersteller</th>
@@ -22,16 +22,16 @@
       <td><%= nb.serial %></td>
       <td><%= nb.pool.try(:pool_name) %></td>
       <td><%= nb.location.try(:loc_acronym) %></td>
-      <td>( <%= link_to "details", notebook_path(nb) %>
-        <% if admin_signed_in? %> |</td>
-          <td><%= link_to "ändern", edit_notebook_path(nb) %> |</td>
-          <td><%= link_to "löschen", nb, :confirm => "Wollen Sie dieses Notebook wirklich löschen?", method: :delete %>
-        <% end %>)</td>
+      <td><%= link_to "<i class=\"icon-eye-open\"></i>".html_safe, notebook_path(nb), :class => "btn btn-small btn-info" %>
+        <% if admin_signed_in? %></td>
+          <td><%= link_to "<i class=\"icon-edit\"></i>".html_safe, edit_notebook_path(nb), :class => "btn btn-small btn-warning" %></td>
+          <td><%= link_to "<i class=\"icon-remove\"></i>".html_safe, nb, :class => "btn btn-small btn-danger", :confirm => "Wollen Sie dieses Notebook wirklich löschen?", method: :delete %>
+        <% end %></td>
     </tr>
   <% end %>  
 </table>
 
 <br />
-<% if admin_signed_in? %>
-  <%= link_to "Notebook hinzufügen", new_notebook_path %>
+<% if admin_signed_in? %>  
+  <%= link_to "Notebook hinzufügen", new_notebook_path, :class => "btn btn-primary" %>
 <% end %>

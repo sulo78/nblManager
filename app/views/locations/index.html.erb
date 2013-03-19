@@ -2,7 +2,7 @@
 
 <h2>Liste der Standorte</h2>
 
-<table>
+<table class="table">
   <tr>
     <th>Standort</th>
     <th></th>
@@ -11,12 +11,12 @@
   <% @locations.each do |loc| %>
     <tr>
       <td><%= loc.loc_acronym %></td>
-      <td>(<%= link_to "ändern", edit_location_path(loc) %> |</td>
-      <td><%= link_to "löschen", loc, :confirm => "Wollen Sie diesen Standort wirklich löschen?", method: :delete %>)</td>
+      <td><%= link_to "<i class=\"icon-edit\"></i>".html_safe, edit_location_path(loc), :class => "btn btn-small btn-warning" %></td>
+      <td><%= link_to "<i class=\"icon-remove\"></i>".html_safe, loc, :class => "btn btn-small btn-danger", :confirm => "Wollen Sie diesen Standort wirklich löschen?", method: :delete %></td>
     </tr>
   <% end %>  
 </table>
 
 <br />
 
-<%= link_to "Standort hinzufügen", new_location_path %>
+<%= link_to "Standort hinzufügen", new_location_path, :class => "btn btn-primary" %>
