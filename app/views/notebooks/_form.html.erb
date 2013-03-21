@@ -1,0 +1,12 @@
+<%= simple_form_for(@notebook, :html => {:class => "form-horizontal" }) do |f| %>
+  <%= f.association :pool, label_method: :pool_name %>
+  <%= f.association :location, label_method: :loc_acronym %>
+  <%= f.input :nb_name, label: "Notebookname" %>
+  <%= f.input :manufactor, label: "Hersteller" %>
+  <%= f.input :nb_type, label: "Modell" %>
+  <%= f.input :serial, label: "Service-Tag" %>
+  <%= f.input :cpu, label: "Prozessor" %>
+  <%= f.input :ram, label: "Arbeitsspeicher" %>
+  <%= f.input :comment, label: "Kommentar", as: :text %>
+  <%= f.submit "Speichern", class: "btn btn-success" %>
+<% end %>

@@ -1,26 +1,8 @@
 <% @title = "Pool hinzufügen" %>
 
-<h2>Pool hinzufügen</h2>
+<h3>Pool hinzufügen</h3>
 
-<%= form_for @pool do |f| %>
-  <% if @pool.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@pool.errors.count, "error") %> prohibited this pool from being saved:</h2>
-
-      <ul>
-      <% @pool.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :pool_name, "Poolname:" %><br />
-    <%= f.text_field :pool_name %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Pool hinzufügen" %>
-  </div>
+<%= simple_form_for(@pool, :html => {:class => "form-horizontal"}) do |f| %>
+  <%= f.input :pool_name, label: "Poolname" %>
+  <%= f.submit "Speichern", class: "btn btn-success" %>
 <% end %>

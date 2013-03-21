@@ -1,17 +1,9 @@
 <% @title = "Login" %>
 
-<h2>Log in</h2>
+<h3>Log in</h3>
 
-<%= form_tag sessions_path do %>
-<form class="form-horizontal">
-  <div class="control-group">
-    <%= label_tag :username, "Benutzername", :class => "control-label" %><br />
-    <%= text_field_tag :username, params[:username], :class => "controls" %>
-  </div>
-  <div class="field">
-    <%= label_tag :password, "Passwort" %><br />
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions"><%= submit_tag "Log in", :class => "btn btn-success" %></div>
-</form>
+<%= simple_form_for(:session, url: sessions_path, :html => {class: "form-vertical"}) do |f|%>
+  <%= f.input :username, label: "Benutzername" %>
+  <%= f.input :password, label: "Passwort" %>
+  <%= f.submit "Log in", class: "btn btn-primary" %>
 <% end %>

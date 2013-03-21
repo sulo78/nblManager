@@ -11,6 +11,6 @@ class Notebook < ActiveRecord::Base
   
 #validations
   attr_accessible :comment, :cpu, :location_id, :manufactor, :nb_name, :nb_type, :pool_id, :ram, :serial, :is_lent
-  validates_presence_of :nb_name, :manufactor, :nb_type, :serial
+  validates_presence_of :nb_name, :manufactor, :nb_type, :serial, :location, :pool
   validates_uniqueness_of :nb_name, :serial
 end

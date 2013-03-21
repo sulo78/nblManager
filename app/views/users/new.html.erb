@@ -1,34 +1,10 @@
 <% @title = "Neuer Benutzer" %>
 
-<h2>Neuen Benutzer anlegen</h2>
+<h3>Neuen Benutzer anlegen</h3>
 
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-	<li><%= msg %></li>
-      <% end %>
-    </ul>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>		
-  </div>
-
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>	
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>	
-  </div>
-
-  <div class="action">
-    <%= f.submit %>	
-  </div>
-
+<%= simple_form_for(@user, :html => {:class => "form-horizontal"}) do |f| %>
+  <%= f.input :username, label: "Benutzername" %>
+  <%= f.input :password, label: "Passwort" %>
+  <%= f.input :password_confirmation, label: "Passwort wiederholen" %>
+  <%= f.submit "Speichern", class: "btn btn-success" %>
 <% end %>
