@@ -1,2 +1,32 @@
-<h1>Lendings#index</h1>
-<p>Find me in app/views/lendings/index.html.erb</p>
+<% @title = "Notebooks ausleihen" %>
+
+<h2>Vorhandene Notebooks</h2>
+
+<% location = Location.find_by_loc_acronym("AP1") %>
+
+<% location.notebooks.each do |nb| %>
+  <% if nb.is_lent == false %>
+  <div class="available">
+  <% else %>
+  <div class="islent">
+  <% end %>
+    <table class = "table table-bordered table-hover">
+      <tr>
+        <th>Notebookname</th>
+        <th>Hersteller</th>
+        <th>Modell</th>
+        <th>Service-Tag</th>
+        <th>Pool</th>
+        <th>Standort</th>
+      </tr>
+      <tr>
+        <td><%= nb.nb_name %></td>
+        <td><%= nb.manufactor %></td>
+        <td><%= nb.nb_type %></td>
+        <td><%= nb.serial %></td>
+        <td><%= nb.pool.try(:pool_name) %></td>
+        <td><%= nb.location.try(:loc_acronym) %></td>
+      </tr>
+    </table>
+  </div>
+<% end %>
