@@ -11,7 +11,7 @@
  *= require_self
  *= require_tree .
  */
- 
+
  .content {
   background-color: #eee;
   padding: 20px;
@@ -37,6 +37,7 @@
 }
 
  #user_nav {
+  padding-top: 10px;
   text-align: right;
   h2 { margin-bottom: 0px; }
  }

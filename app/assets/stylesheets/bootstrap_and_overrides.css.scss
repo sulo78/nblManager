@@ -1,5 +1,5 @@
 @import "bootstrap";
-body { padding-top: 140px; }
+body { padding-top: 80px; }
 @import "bootstrap-responsive";
 
  .table {
@@ -8,12 +8,32 @@ body { padding-top: 140px; }
  } 
  
  .navbar .brand {
-  display: block;
-  float: left;
-  padding: 15px 20px 15px;
-  margin-left: -20px;
-  font-size: 20px;
-  font-weight: 400;
-  color: #000000;
-  text-shadow: 0 1px 0 #080808;
+ font-weight: bolder;
+ color: #DDDDDD;
+ text-shadow: none;
 }
+
+ .navbar-inner {
+ background: #2e2e2e;
+ color: #DDDDDD;
+ text-shadow: none;
+ }
+ 
+ .navbar .nav > li > a {
+ color: #DDDDDD;
+ float: none;
+ padding: 10px 15px;
+ text-decoration: none;
+ text-shadow: none;
+ }
+
+ .navbar  {
+   a:hover, a:focus {
+   color: #EEEEEE;
+   } 
+ }
+ 
+ .span5 {
+ margin-left: 0px;
+ padding-right: 20px;
+ }

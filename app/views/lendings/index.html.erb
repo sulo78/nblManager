@@ -3,7 +3,7 @@
 <% location = Location.find_by_loc_acronym("AP1") %>
 
 <div class="span5">
-<h4>Notebooks</h4>
+<h2>Notebooks</h2>
 <% location.notebooks.each do |nb| %>
   <% if nb.is_lent == false %>
     <div class="available span5">
@@ -15,7 +15,6 @@
         <th>Notebookname</th>
         <th>Hersteller</th>
         <th>Modell</th>
-        <th></th>
       </tr>
       <tr>
         <td><%= nb.nb_name %></td>
@@ -33,7 +32,7 @@
 </div>
 
 <div class="span5">
-<h4>Ausleihen</h4>
+<h2>Ausleihen</h2>
 <% @lendings.each do |l| %>
   <div class="span4">
     <table class="table table-bordered">
@@ -47,8 +46,3 @@
   </div>
 <% end %>	
 </div>
-
-<div class="span7">
-  <%= debug(@location) %>	
-</div>
-

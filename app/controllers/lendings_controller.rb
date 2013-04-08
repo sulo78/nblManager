@@ -3,7 +3,7 @@ class LendingsController < ApplicationController
 
 # HTTP-GET-Methoden (views)
 
-# GET /lendings/index
+# GET /lendings/index - zeigt alle Notebooks einer bestimmten Location
   def index
     @location = Location.all
     @notebooks = Notebook.all
@@ -37,5 +37,4 @@ class LendingsController < ApplicationController
         @lending.destroy
           redirect_to lendings_path, :notice => "Notebook zurückgegeben"
   end
-  
 end
