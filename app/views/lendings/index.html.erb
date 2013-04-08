@@ -15,6 +15,7 @@
         <th>Notebookname</th>
         <th>Hersteller</th>
         <th>Modell</th>
+        <th></th>
       </tr>
       <tr>
         <td><%= nb.nb_name %></td>
@@ -34,7 +35,7 @@
 <div class="span5">
 <h2>Ausleihen</h2>
 <% @lendings.each do |l| %>
-  <div class="span4">
+  <div class="span5">
     <table class="table table-bordered">
     	<tr>
     	  <th><%= l.lender_name %></th> 

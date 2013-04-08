@@ -1,6 +1,6 @@
 <% nb = @notebook %>
 
-<h3><%= nb.nb_name %> ausleihen</h3>
+<h2><%= nb.nb_name %> ausleihen</h2>
 
   <table class = "table">
     <tr>
@@ -17,9 +17,14 @@
     </tr>  
   </table>
   
-<b>Ausgabe durch: </b><%= @user.username %>
+<h3>Zeitraum</h3>
+    <%= simple_form_for(@lending, :html => {:class => "form-vertical" }) do |z| %>
+      <%= z.input :lending_start, label: "von" %> 
+      <%= z.input :lending_end, label: "bis" %> 
+    <% end %>	
+
   
-<h3>Nutzerdaten:
+<h3>Nutzerdaten:</h3>
     
   <%= simple_form_for(@lending, :html => {:class => "form-horizontal" }) do |f| %>
     <%= f.input :lender_name, label: "Vorname" %> 
@@ -31,7 +36,7 @@
     <%= f.input :comment, label: "Kommentar", as: :text, :input_html => { :rows => 5 } %>
     <%= f.input :notebook_id, :as => :hidden, :input_html => { :value => @notebook.id } %>
     <%= f.input :user_id, :as => :hidden, :input_html => { :value => @user.id } %>
-    <%= f.submit "Ausleihen", class: "btn btn-success" %>
+    <%= f.submit "Ausleihen", class: "btn btn-success " %> (Ausgabe durch: <b><%= @user.username %></b>)
   <% end %>
   
   wolle diese nb? : <%= @notebook.id %>
