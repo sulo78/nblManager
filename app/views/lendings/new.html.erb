@@ -1,2 +1,40 @@
-<h1>Lendings#new</h1>
-<p>Find me in app/views/lendings/new.html.erb</p>
+<% nb = @notebook %>
+
+<h3><%= nb.nb_name %> ausleihen</h3>
+
+  <table class = "table">
+    <tr>
+      <th>Notebookname:</th><td><%= nb.nb_name %></td>
+    </tr>
+    <tr>
+      <th>Hersteller:</th><td><%= nb.manufactor %></td>
+    </tr>  
+    <tr>
+      <th>Modell:</th><td><%= nb.nb_type %></td>
+    </tr> 
+    <tr>
+      <th>Service-Tag:</th> <td><%= nb.serial %></td>
+    </tr>  
+  </table>
+  
+<b>Ausgabe durch: </b><%= @user.username %>
+  
+<h3>Nutzerdaten:
+    
+  <%= simple_form_for(@lending, :html => {:class => "form-horizontal" }) do |f| %>
+    <%= f.input :lender_name, label: "Vorname" %> 
+    <%= f.input :lender_surname, label: "Nachname" %> 
+    <%= f.input :lender_phone, label: "Durchwahl" %> 
+    <%= f.input :department, label: "Lehrstuhl" %>
+    <%= f.input :room_nr, label: "Veranstaltungsraum" %>
+    <%= f.input :accessories, label: "Zubehör", as: :text, :input_html => { :rows => 5 } %>
+    <%= f.input :comment, label: "Kommentar", as: :text, :input_html => { :rows => 5 } %>
+    <%= f.input :notebook_id, :as => :hidden, :input_html => { :value => @notebook.id } %>
+    <%= f.input :user_id, :as => :hidden, :input_html => { :value => @user.id } %>
+    <%= f.submit "Ausleihen", class: "btn btn-success" %>
+  <% end %>
+  
+  wolle diese nb? : <%= @notebook.id %>
+  wolle diese u? : <%= @user.id %>
+  
+  <%= debug @notebook %>

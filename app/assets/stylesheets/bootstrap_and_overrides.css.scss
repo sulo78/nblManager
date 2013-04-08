@@ -1,3 +1,19 @@
 @import "bootstrap";
 body { padding-top: 140px; }
 @import "bootstrap-responsive";
+
+ .table {
+ margin: 5px;
+ padding: 0px;
+ } 
+ 
+ .navbar .brand {
+  display: block;
+  float: left;
+  padding: 15px 20px 15px;
+  margin-left: -20px;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000000;
+  text-shadow: 0 1px 0 #080808;
+}

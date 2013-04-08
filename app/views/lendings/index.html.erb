@@ -1,32 +1,54 @@
 <% @title = "Notebooks ausleihen" %>
 
-<h2>Vorhandene Notebooks</h2>
-
 <% location = Location.find_by_loc_acronym("AP1") %>
 
+<div class="span5">
+<h4>Notebooks</h4>
 <% location.notebooks.each do |nb| %>
   <% if nb.is_lent == false %>
-  <div class="available">
+    <div class="available span5">
   <% else %>
-  <div class="islent">
+    <div class="islent span5">
   <% end %>
-    <table class = "table table-bordered table-hover">
+    <table class = "table table-bordered">
       <tr>
         <th>Notebookname</th>
         <th>Hersteller</th>
         <th>Modell</th>
-        <th>Service-Tag</th>
-        <th>Pool</th>
-        <th>Standort</th>
+        <th></th>
       </tr>
       <tr>
         <td><%= nb.nb_name %></td>
         <td><%= nb.manufactor %></td>
         <td><%= nb.nb_type %></td>
-        <td><%= nb.serial %></td>
-        <td><%= nb.pool.try(:pool_name) %></td>
-        <td><%= nb.location.try(:loc_acronym) %></td>
+        <% if nb.is_lent == false %>
+          <td><%= link_to "Ausleihen", new_lending_path(:notebook_id => nb), class: "btn btn-primary" %></td>
+        <% else %>
+          <td>verliehen!</td>
+        <% end %>
       </tr>
     </table>
   </div>
-<% end %>
+<% end %>	
+</div>
+
+<div class="span5">
+<h4>Ausleihen</h4>
+<% @lendings.each do |l| %>
+  <div class="span4">
+    <table class="table table-bordered">
+    	<tr>
+    	  <th><%= l.lender_name %></th> 
+    	  <th><%= l.lender_surname %></th>
+    	  <th><%= l.notebook_id %></th>
+    	  <td><%= link_to "<i class=\"icon-remove\"></i>".html_safe, l, :class => "btn btn-small btn-danger", :confirm => "Wollen Sie dieses Notebook wirklich zurückgeben?", method: :delete %>
+    	</tr>
+    </table>
+  </div>
+<% end %>	
+</div>
+
+<div class="span7">
+  <%= debug(@location) %>	
+</div>
+
