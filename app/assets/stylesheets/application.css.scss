@@ -12,7 +12,13 @@
  *= require_tree .
  */
 
- .content {
+ @mixin rounded-corners($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+.content {
   background-color: #eee;
   padding: 20px;
   margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
@@ -28,18 +34,35 @@
   background-color: #90ee90;
   padding: 10px;
   margin-bottom: 20px;
+  @include rounded-corners(5px);
 }
 
  .islent { 
   background-color: #dc143c;
   padding: 10px;
   margin-bottom: 20px;
+  @include rounded-corners(5px);
+}
+
+ .intime {
+  background-color: lightblue;
+  padding: 10px;
+  @include rounded-corners(5px);
+  vertical-align: middle;
+ 
+}
+
+ .outtime {
+  background-color: yellow;
+  padding: 10px;
+  margin-bottom: 20px;
+  @include rounded-corners(5px);
+ 
 }
 
  #user_nav {
   padding-top: 10px;
   text-align: right;
-  h2 { margin-bottom: 0px; }
  }
  
 

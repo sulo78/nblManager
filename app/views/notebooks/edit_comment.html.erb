@@ -1,0 +1,7 @@
+<% @title = "Notebook kommentieren" %>
+
+<h3>Notebook kommentieren</h3>
+
+<%= simple_form_for(@notebook, :html => {:class => "form-vertical" }) do |f| %>
+  <%= f.input :comment, label: "Kommentar", :as => "text" %>
+<% end %>

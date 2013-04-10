@@ -4,31 +4,24 @@
 
 <div class="span5">
 <h2>Notebooks</h2>
-<% location.notebooks.each do |nb| %>
-  <% if nb.is_lent == false %>
-    <div class="available span5">
+<% location.notebooks.order('nb_name').each do |nb| %>
+  <% if nb.is_lent? %>  
+    <table class="islent table table-bordered">    
   <% else %>
-    <div class="islent span5">
+    <table class="available table table-bordered">
   <% end %>
-    <table class = "table table-bordered">
       <tr>
-        <th>Notebookname</th>
-        <th>Hersteller</th>
-        <th>Modell</th>
-        <th></th>
-      </tr>
-      <tr>
-        <td><%= nb.nb_name %></td>
+        <th><%= nb.nb_name %></th>
         <td><%= nb.manufactor %></td>
         <td><%= nb.nb_type %></td>
         <% if nb.is_lent == false %>
-          <td><%= link_to "Ausleihen", new_lending_path(:notebook_id => nb), class: "btn btn-primary" %></td>
+          <td><%= link_to "<i class=\"icon-hand-right icon-white\"></i> Ausleihen".html_safe, new_lending_path(:notebook_id => nb), class: "btn btn-primary btn-mini" %></td>
         <% else %>
           <td>verliehen!</td>
         <% end %>
-      </tr>
+      <td><%= link_to "<i class=\"icon-eye-open\"></i>".html_safe, notebook_path(nb) %></td>
     </table>
-  </div>
+  </tr>
 <% end %>	
 </div>
 
@@ -36,12 +29,14 @@
 <h2>Ausleihen</h2>
 <% @lendings.each do |l| %>
   <div class="span5">
-    <table class="table table-bordered">
+    <table class="intime table table-bordered">
     	<tr>
-    	  <th><%= l.lender_name %></th> 
-    	  <th><%= l.lender_surname %></th>
-    	  <th><%= l.notebook_id %></th>
-    	  <td><%= link_to "<i class=\"icon-remove\"></i>".html_safe, l, :class => "btn btn-small btn-danger", :confirm => "Wollen Sie dieses Notebook wirklich zurückgeben?", method: :delete %>
+    	  <th><%= l.notebook.try(:nb_name) %></th>
+    	  <th><%= l.lender_name %> <%= l.lender_surname %></th> 
+    	  <th><%= l.lending_start.try(:hour) %> - <%= l.lending_end.try(:hour) %> Uhr</th>
+    	  
+    	  <td><%= link_to "<i class=\"icon-hand-left icon-white\"></i> Zurückgeben".html_safe, l, :class => "btn btn-small btn-warning btn-mini", :confirm => "Wollen Sie dieses Notebook wirklich zurückgeben?", method: :delete %>
+    	  <td><%= link_to "<i class=\"icon-eye-open\"></i>".html_safe, lending_path(l) %></td>
     	</tr>
     </table>
   </div>

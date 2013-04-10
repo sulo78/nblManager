@@ -1,7 +1,9 @@
+<% @title = "Notebook Details" %>
+
 <h2><%= t("text.Notebook_Details") %></h2>
 
-<div class="details">
-  <table>
+<div class="span5">
+  <table class="table table-bordered">
     <tr>
       <th><h3><%= @notebook.nb_name %></h3></th>
     </tr>
@@ -10,8 +12,6 @@
       <th>Service-Tag:</th>
       <td><b><%= @notebook.serial %></b></td>
     </tr>
-    
-    <tr><td></br></td></tr>
     
     <tr>
       <th>Pool:</th>
@@ -47,9 +47,12 @@
   </table>
 </div> 
 
-<div class="comment">
-  <p>
-    <b>Kommentar:</b></br>
-    <%= @notebook.comment %>
-  </p>	
+<div class="span5">
+  <table class="table table-bordered">
+    <tr>
+      <th>Kommentar</th>
+    </tr>
+    <tr>
+      <td><%= @notebook.comment %></td>
+    </tr>
 </div>

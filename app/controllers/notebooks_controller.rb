@@ -23,6 +23,11 @@ class NotebooksController < ApplicationController
   def edit
     @notebook = Notebook.find(params[:id])
   end
+  
+# GET /notebooks/1/edit_comment
+  def edit_comment
+    @notebook = Notebook.find(params[:id])
+  end
 
 # CRUD-Methoden
 
@@ -30,7 +35,7 @@ class NotebooksController < ApplicationController
   def create
     @notebook = Notebook.new(params[:notebook])
       if @notebook.save
-        redirect_to notebooks_path, :notice => "Notebook erfolgreich gespeichert!"   	
+        redirect_to notebooks_path, :notice => "Notebook: #{@notebook.nb_name} erfolgreich gespeichert!"   	
       else
       	render "new"
       end
@@ -45,7 +50,7 @@ class NotebooksController < ApplicationController
   def update
     @notebook = Notebook.find(params[:id])
       if @notebook.update_attributes(params[:notebook])
-        redirect_to notebooks_path, :notice => "Notebook erfolgreich geändert"
+        redirect_to notebooks_path, :notice => "Notebook: #{@notebook.nb_name} erfolgreich geändert"
       else
       	render "edit"
       end

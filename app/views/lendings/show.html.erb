@@ -1,0 +1,38 @@
+<% @title = "Ausleihe Details" %>
+
+<h3>Details zur Ausleihe</h3>
+
+<div class="span5">
+  <table class="table table-bordered">
+    <tr>
+      <th>Notebook:</th>
+      <td><%= @lending.notebook.nb_name %></td>
+    </tr>
+    <tr>
+      <th>Raum:</th>
+      <td><%= @lending.room_nr %></td>
+    </tr>
+    <tr>
+      <th>von:</th><td><%= @lending.lending_start.hour %> Uhr</td>
+    <tr/>
+    <tr>
+      <th>bis:</th><td><%= @lending.lending_end.hour %> Uhr</td>
+    </tr>
+    <tr>
+      <th>Verliehen an:</th>
+      <td><%= @lending.lender_name %> <%= @lending.lender_surname %></td>
+    </tr>
+    <tr>
+      <th>Tel:</th>
+      <td><%= @lending.lender_phone %></td>
+    </tr>
+    <tr>
+      <th>Kommentar:</th>
+      <td><%= @lending.comment %></td>
+    </tr>
+    <tr>
+      <td><%= link_to "<i class=\"icon-hand-left icon-white\"></i> Zurück".html_safe, lendings_path, :class => "btn btn-primary" %></td>
+    </tr>
+  </table>	
+</div>
+

@@ -1,6 +1,9 @@
 # encoding: utf-8
 class LendingsController < ApplicationController
 
+# Only signed in Users can access index
+  before_filter :require_login
+
 # HTTP-GET-Methoden (views)
 
 # GET /lendings/index - zeigt alle Notebooks einer bestimmten Location
@@ -28,6 +31,12 @@ class LendingsController < ApplicationController
       	render "new"
       end
   end
+  
+# READ: GET /lendings/1/show
+  def show
+    @lending = Lending.find(params[:id])
+  end  
+  
   
 # DESTROY: DELETE /notebooks/1
   def destroy
