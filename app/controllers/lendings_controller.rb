@@ -19,6 +19,11 @@ class LendingsController < ApplicationController
     @notebook = Notebook.find(params[:notebook_id])
     @lending = Lending.new
   end
+  
+# GET /lendings/1/edit
+  def edit
+    @lending = Lending.find(params[:id])
+  end
 
 # CREATE: POST /lendings
   def create
@@ -38,6 +43,17 @@ class LendingsController < ApplicationController
   end  
   
   
+  
+# UPDATE: PUT /lendings/1
+  def update
+    @lending = Lending.find(params[:id])
+      if @lendings.update_attributes(params[:notebook])
+        redirect_to lendings_path, :notice => "Notebook: #{@lending.lender_name} erfolgreich geändert"
+      else
+      	render "edit"
+      end
+  end
+   
 # DESTROY: DELETE /notebooks/1
   def destroy
     @lending = Lending.find(params[:id])

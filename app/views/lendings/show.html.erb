@@ -13,10 +13,12 @@
       <td><%= @lending.room_nr %></td>
     </tr>
     <tr>
-      <th>von:</th><td><%= @lending.lending_start.hour %> Uhr</td>
+      <th>von:</th>
+      <td><%= @lending.lending_start.to_formatted_s(:short) %> Uhr</td>
     <tr/>
     <tr>
-      <th>bis:</th><td><%= @lending.lending_end.hour %> Uhr</td>
+      <th>bis:</th>
+      <td><%= @lending.lending_end.to_formatted_s(:short) %> Uhr</td>
     </tr>
     <tr>
       <th>Verliehen an:</th>
@@ -26,13 +28,21 @@
       <th>Tel:</th>
       <td><%= @lending.lender_phone %></td>
     </tr>
+  </table>	
+</div>
+
+<div class="span5">
+  <table class="table table-bordered">
     <tr>
-      <th>Kommentar:</th>
+      <th>Kommentar: <%= link_to "<i class=\"icon-edit\"></i>".html_safe, edit_lending_path(@lending), :class => "btn btn-warning" %></th>
+    </tr>
+    <tr>
       <td><%= @lending.comment %></td>
     </tr>
-    <tr>
-      <td><%= link_to "<i class=\"icon-hand-left icon-white\"></i> Zurück".html_safe, lendings_path, :class => "btn btn-primary" %></td>
-    </tr>
-  </table>	
+  </table>
+</div>
+
+<div class="span5">
+  <%= link_to "<i class=\"icon-hand-left icon-white\"></i> Zurück".html_safe, lendings_path, :class => "btn btn-primary" %></td>
 </div>
 

@@ -1,16 +1,25 @@
 <%= simple_form_for(@notebook, :html => {:class => "form-vertical" }) do |f| %>
-  <div class="span4">
-    <%= f.association :pool, label_method: :pool_name %>
-    <%= f.association :location, label_method: :loc_acronym %>
-    <%= f.input :nb_name, label: "Notebookname" %>
-    <%= f.input :manufactor, label: "Hersteller" %>
-    <%= f.input :nb_type, label: "Modell" %>
-    <%= f.input :serial, label: "Service-Tag" %>
-    <%= f.input :cpu, label: "Prozessor" %>
-    <%= f.input :ram, label: "Arbeitsspeicher" %>
-  </div>
-  <div class="span4">
-    <%= f.input :comment, label: "Kommentar", as: :text %>
-    <%= f.submit "Speichern", class: "btn btn-success" %>	    
-  </div> 
+  <% if admin_signed_in? %>
+    <div class="row">
+      <div class="span4">
+      <%= f.association :pool, label_method: :pool_name, :input_html => { :class => "field span3" } %>
+      <%= f.association :location, label_method: :loc_acronym, :input_html => { :class => "field span3" } %>
+      <%= f.input :nb_name, label: "Notebookname", :input_html => { :class => "field span3" } %>
+      <%= f.input :manufactor, label: "Hersteller", :input_html => { :class => "field span3" } %>
+      <%= f.input :nb_type, label: "Modell", :input_html => { :class => "field span3" } %>
+      <%= f.input :serial, label: "Service-Tag", :input_html => { :class => "field span3" } %>
+      <%= f.input :cpu, label: "Prozessor", :input_html => { :class => "field span3" } %>
+      <%= f.input :ram, label: "Arbeitsspeicher", :input_html => { :class => "field span3" } %>    	
+      </div>
+      <div class="span6">
+      <%= f.input :comment, label: "Kommentar", as: :text, :input_html => { :rows => 8, :class => "field span4" } %>
+      <%= f.submit "Speichern", class: "btn btn-success" %>
+      </div>
+    </div>
+  <% else %>
+    <div class="span6">
+      <%= f.input :comment, label: "Kommentar", as: :text, :input_html => { :rows => 8, :class => "field span5" } %>
+      <%= f.submit "Speichern", class: "btn btn-success" %>	    
+    </div>
+  <% end %>
 <% end %>

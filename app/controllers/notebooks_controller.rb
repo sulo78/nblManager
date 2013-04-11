@@ -2,10 +2,10 @@
 class NotebooksController < ApplicationController
 
 # Only Admin has access to new, edit, create, update, destroy
-  before_filter :require_admin, :only => [:new, :edit, :create, :update, :destroy]
+  before_filter :require_admin, :only => [:new, :create, :destroy]
 
 # Only signed in Users can access index
-  before_filter :require_login, :only => [:index, :show]
+  before_filter :require_login, :only => [:index, :update, :show]
 
 # HTTP-GET-Methoden (views)
 
@@ -50,7 +50,11 @@ class NotebooksController < ApplicationController
   def update
     @notebook = Notebook.find(params[:id])
       if @notebook.update_attributes(params[:notebook])
-        redirect_to notebooks_path, :notice => "Notebook: #{@notebook.nb_name} erfolgreich geändert"
+        if admin_signed_in?
+          redirect_to notebooks_path, :notice => "Notebook: #{@notebook.nb_name} erfolgreich geändert"
+        else
+          redirect_to lendings_path, :notice => "Notebook: #{@notebook.nb_name} erfolgreich geändert"
+        end
       else
       	render "edit"
       end

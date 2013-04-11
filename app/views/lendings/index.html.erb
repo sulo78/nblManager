@@ -28,17 +28,14 @@
 <div class="span5">
 <h2>Ausleihen</h2>
 <% @lendings.each do |l| %>
-  <div class="span5">
-    <table class="intime table table-bordered">
-    	<tr>
-    	  <th><%= l.notebook.try(:nb_name) %></th>
-    	  <th><%= l.lender_name %> <%= l.lender_surname %></th> 
-    	  <th><%= l.lending_start.try(:hour) %> - <%= l.lending_end.try(:hour) %> Uhr</th>
-    	  
-    	  <td><%= link_to "<i class=\"icon-hand-left icon-white\"></i> Zurückgeben".html_safe, l, :class => "btn btn-small btn-warning btn-mini", :confirm => "Wollen Sie dieses Notebook wirklich zurückgeben?", method: :delete %>
-    	  <td><%= link_to "<i class=\"icon-eye-open\"></i>".html_safe, lending_path(l) %></td>
-    	</tr>
-    </table>
-  </div>
+  <table class="intime table table-bordered">
+    <tr>
+      <th><%= l.notebook.try(:nb_name) %></th>
+      <th><%= l.lender_name %> <%= l.lender_surname %></th> 
+      <th><%= l.lending_start.try(:hour) %> - <%= l.lending_end.try(:hour) %> Uhr</th>
+      <td><%= link_to "<i class=\"icon-hand-left icon-white\"></i> Zurückgeben".html_safe, l, :class => "btn btn-small btn-warning btn-mini", :confirm => "Wollen Sie dieses Notebook wirklich zurückgeben?", method: :delete %>
+      <td><%= link_to "<i class=\"icon-eye-open\"></i>".html_safe, lending_path(l) %></td>
+    </tr>
+  </table>
 <% end %>	
 </div>
