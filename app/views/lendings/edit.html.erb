@@ -1,0 +1,10 @@
+<% @title = "Ausleihe aktualisieren" %>
+
+<h3>Ausleihe aktualisieren</h3>
+
+<div class="span6">
+  <%= simple_form_for(@lending, :html => {:class => "form-vertical" }) do |f| %>
+    <%= f.input :comment, label: "Kommentar", as: :text, :input_html => { :rows => 8, :class => "field span5" } %>
+    <%= f.submit "Speichern", class: "btn btn-success" %>
+  <% end %>
+</div>

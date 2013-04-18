@@ -1,9 +1,9 @@
 class Notebook < ActiveRecord::Base
   
-# A Notebook has one Pool
+# A Notebook has a Pool
   belongs_to :pool
   
-# A Notebook has one Location
+# A Notebook has a Location
   belongs_to :location
   
 # A Notebook has a lot of lendings

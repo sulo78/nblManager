@@ -28,10 +28,23 @@
       <th>Tel:</th>
       <td><%= @lending.lender_phone %></td>
     </tr>
+    <tr>
+      <th>Ausgabe durch:</th>
+      <td><%= @lending.user.try(:username) %></td>
+    </tr>
   </table>	
 </div>
 
 <div class="span5">
+  <table class="table table-bordered">
+    <tr>
+      <th>Zubehör:</th>
+    </tr>
+    <tr>
+      <td><%= @lending.accessories %></td>
+    </tr>
+  </table>
+  
   <table class="table table-bordered">
     <tr>
       <th>Kommentar: <%= link_to "<i class=\"icon-edit\"></i>".html_safe, edit_lending_path(@lending), :class => "btn btn-warning" %></th>

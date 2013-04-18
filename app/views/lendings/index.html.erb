@@ -2,40 +2,60 @@
 
 <% location = Location.find_by_loc_acronym("AP1") %>
 
-<div class="span5">
-<h2>Notebooks</h2>
+  <div class="span12">
+      <div class="span5">
+      <h3>Notebooks</h3>
 <% location.notebooks.order('nb_name').each do |nb| %>
   <% if nb.is_lent? %>  
-    <table class="islent table table-bordered">    
+    <table class="islent table table-bordered">
   <% else %>
-    <table class="available table table-bordered">
+    <table class="available table table-bordered text-center">
   <% end %>
+    <colgroup>
+      <col class="info1">
+      <col class="info2">
+      <col class="info3">
+      <col class="info4">
+      <col class="info5">
+    </colgroup>  
       <tr>
-        <th><%= nb.nb_name %></th>
-        <td><%= nb.manufactor %></td>
-        <td><%= nb.nb_type %></td>
+        <th><%= nb.try(:nb_name) %></th>
+        <td><%= nb.try(:manufactor) %></td>
+        <td><%= nb.try(:nb_type) %></td>
         <% if nb.is_lent == false %>
-          <td><%= link_to "<i class=\"icon-hand-right icon-white\"></i> Ausleihen".html_safe, new_lending_path(:notebook_id => nb), class: "btn btn-primary btn-mini" %></td>
+          <td><%= link_to "<i class=\"icon-hand-right icon-white\"></i>".html_safe, new_lending_path(:notebook_id => nb), class: "btn btn-primary btn-mini" %></td>
         <% else %>
-          <td>verliehen!</td>
+          <td><%= link_to "<i class=\"icon-hand-right icon-white\"></i>".html_safe, lendings_path, class: "btn btn-primary btn-mini disabled" %></td>
         <% end %>
       <td><%= link_to "<i class=\"icon-eye-open\"></i>".html_safe, notebook_path(nb) %></td>
     </table>
   </tr>
 <% end %>	
 </div>
-
+      
 <div class="span5">
-<h2>Ausleihen</h2>
-<% @lendings.each do |l| %>
-  <table class="intime table table-bordered">
-    <tr>
-      <th><%= l.notebook.try(:nb_name) %></th>
-      <th><%= l.lender_name %> <%= l.lender_surname %></th> 
-      <th><%= l.lending_start.try(:hour) %> - <%= l.lending_end.try(:hour) %> Uhr</th>
-      <td><%= link_to "<i class=\"icon-hand-left icon-white\"></i> Zurückgeben".html_safe, l, :class => "btn btn-small btn-warning btn-mini", :confirm => "Wollen Sie dieses Notebook wirklich zurückgeben?", method: :delete %>
-      <td><%= link_to "<i class=\"icon-eye-open\"></i>".html_safe, lending_path(l) %></td>
-    </tr>
-  </table>
+  <h3>Ausleihen</h3>
+  <% @lendings.each do |l| %>
+    <% if l.lending_end.to_formatted_s(:long) > Time.now.to_formatted_s(:long) %>
+      <table class="intime table table-bordered">
+    <% else %>
+      <table class="outtime table table-bordered">
+    <% end %>    
+      <colgroup>
+        <col class="info1">
+        <col class="info1">
+        <col class="info3">
+        <col class="info4">
+        <col class="info5">
+      </colgroup>  
+      <tr>
+        <th><%= l.notebook.try(:nb_name) %></th>
+        <td><%= l.try(:lender_name) %> <%= l.try(:lender_surname) %></td> 
+        <td><%= l.lending_start.try(:hour) %> - <%= l.lending_end.try(:hour) %> Uhr</td>
+        <td><%= link_to "<i class=\"icon-hand-left icon-white\"></i>".html_safe, l, :class => "btn btn-small btn-warning btn-mini", :confirm => "Wollen Sie dieses Notebook wirklich zurückgeben?", method: :delete %>
+        <td><%= link_to "<i class=\"icon-eye-open\"></i>".html_safe, lending_path(l) %></td>
+      </tr>
+    </table>
 <% end %>	
+</div>
 </div>

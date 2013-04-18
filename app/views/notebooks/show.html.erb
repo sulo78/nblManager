@@ -55,4 +55,14 @@
     <tr>
       <td><%= @notebook.comment %></td>
     </tr>
+  </table>
+</div>
+
+<div class="span5">
+  <% if admin_signed_in? %>
+    <%= link_to "<i class=\"icon-hand-left icon-white\"></i> Zurück".html_safe, notebooks_path, :class => "btn btn-primary" %></td>	
+  <% else %>
+    <%= link_to "<i class=\"icon-hand-left icon-white\"></i> Zurück".html_safe, lendings_path, :class => "btn btn-primary" %></td>
+  <% end %>
+  
 </div>

@@ -53,7 +53,7 @@ class NotebooksController < ApplicationController
         if admin_signed_in?
           redirect_to notebooks_path, :notice => "Notebook: #{@notebook.nb_name} erfolgreich geändert"
         else
-          redirect_to lendings_path, :notice => "Notebook: #{@notebook.nb_name} erfolgreich geändert"
+          redirect_to notebook_path, :notice => "Notebook: #{@notebook.nb_name} erfolgreich geändert"
         end
       else
       	render "edit"

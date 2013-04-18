@@ -2,39 +2,30 @@
 
 <h2><%= nb.nb_name %> ausleihen</h2>
 
-  <table class = "table">
-    <tr>
-      <th>Notebookname:</th><td><%= nb.nb_name %></td>
-    </tr>
-    <tr>
-      <th>Hersteller:</th><td><%= nb.manufactor %></td>
-    </tr>  
-    <tr>
-      <th>Modell:</th><td><%= nb.nb_type %></td>
-    </tr> 
-    <tr>
-      <th>Service-Tag:</th> <td><%= nb.serial %></td>
-    </tr>  
-  </table>
-    
-  <%= simple_form_for(@lending, :html => {:class => "form-vertical" }) do |f| %>
-    <h3>Zeitraum</h3>
-    <%= f.input :lending_start, label: "von" %> 
-    <%= f.input :lending_end, label: "bis" %> 
+<div class="row">
+  <div class="span12">
+    <%= simple_form_for(@lending, :html => {:class => "form-vertical" }) do |f| %>
+    <%= f.input :lending_start, label: "von", :as => :datetime, :start_year => Date.today.year, :input_html => { :class => "field span1" } %> 
+    <%= f.input :lending_end, label: "bis", :as => :datetime, :start_year => Date.today.year, :input_html => { :class => "field span1" } %> 	
+  </div>
+  <div class="span10">
     <h3>Nutzerdaten:</h3>
-    <%= f.input :lender_name, label: "Vorname" %> 
-    <%= f.input :lender_surname, label: "Nachname" %> 
-    <%= f.input :lender_phone, label: "Durchwahl" %> 
-    <%= f.input :department, label: "Lehrstuhl" %>
-    <%= f.input :room_nr, label: "Veranstaltungsraum" %>
-    <%= f.input :accessories, label: "Zubehör", as: :text, :input_html => { :rows => 5 } %>
-    <%= f.input :comment, label: "Kommentar", as: :text, :input_html => { :rows => 5 } %>
+  </div>
+  <div class="span4">
+    <%= f.input :lender_name, label: "Vorname", :input_html => { :class => "field span3" } %> 
+    <%= f.input :lender_surname, label: "Nachname", :input_html => { :class => "field span3" } %> 
+    <%= f.input :lender_phone, label: "Durchwahl", :input_html => { :class => "field span3" } %> 
+    <%= f.input :department, label: "Lehrstuhl", :input_html => { :class => "field span3" } %>
+    <%= f.input :room_nr, label: "Veranstaltungsraum", :input_html => { :class => "field span3" } %>
+  </div>
+  <div class="span6">
+    <%= f.input :accessories, label: "Zubehör", as: :text, :input_html => { :rows => 5, :class => "field span4" } %>
+    <%= f.input :comment, label: "Kommentar", as: :text, :input_html => { :rows => 7, :class => "field span4" } %>
     <%= f.input :notebook_id, :as => :hidden, :input_html => { :value => @notebook.id } %>
-    <%= f.input :user_id, :as => :hidden, :input_html => { :value => @user.id } %>
-    <%= f.submit "Ausleihen", class: "btn btn-success " %> (Ausgabe durch: <b><%= @user.username %></b>)
+    <%= f.input :user_id, :as => :hidden, :input_html => { :value => @user.id } %>	
+  </div>
+  <div class="span4">
+    <%= f.submit "Ausleihen", class: "btn btn-success " %> (Ausgabe durch: <b><%= @user.username %></b>)  	
+  </div>	
+</div>    
   <% end %>
-  
-  wolle diese nb? : <%= @notebook.id %>
-  wolle diese u? : <%= @user.id %>
-  
-  <%= debug @notebook %>

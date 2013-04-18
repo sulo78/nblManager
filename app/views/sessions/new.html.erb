@@ -1,9 +1,10 @@
 <% @title = "Login" %>
+<div class="span5">
+<h2>Log in</h2>
+ <%= simple_form_for(:session, url: sessions_path, :html => {class: "form-vertical"}) do |f|%>
+    <%= f.input :username, label: "Benutzername" %>
+    <%= f.input :password, label: "Passwort" %>
+    <%= f.submit "Log in", class: "btn btn-primary" %>
+  <% end %>
+</div>
 
-<h3>Log in</h3>
-
-<%= simple_form_for(:session, url: sessions_path, :html => {class: "form-vertical"}) do |f|%>
-  <%= f.input :username, label: "Benutzername" %>
-  <%= f.input :password, label: "Passwort" %>
-  <%= f.submit "Log in", class: "btn btn-primary" %>
-<% end %>

@@ -27,11 +27,12 @@ class LendingsController < ApplicationController
 
 # CREATE: POST /lendings
   def create
+    @user = current_user
     @lending = Lending.new(params[:lending])
     @notebook = Notebook.find(@lending.notebook_id)
       if @lending.save
           @notebook.update_attribute(:is_lent, true)  
-            redirect_to lendings_path, :notice => "Ausleihe erfolgreich!"   	
+            redirect_to lendings_path, :notice => "#{@notebook.nb_name} verliehen!"   	
       else
       	render "new"
       end
@@ -47,8 +48,8 @@ class LendingsController < ApplicationController
 # UPDATE: PUT /lendings/1
   def update
     @lending = Lending.find(params[:id])
-      if @lendings.update_attributes(params[:notebook])
-        redirect_to lendings_path, :notice => "Notebook: #{@lending.lender_name} erfolgreich geändert"
+      if @lending.update_attributes(params[:lending])
+        redirect_to lendings_path, :notice => "Ausleihe von #{@lending.lender_name} geändert"
       else
       	render "edit"
       end
@@ -60,6 +61,6 @@ class LendingsController < ApplicationController
     @notebook = Notebook.find(@lending.notebook_id)
       @notebook.update_attribute(:is_lent, false)  
         @lending.destroy
-          redirect_to lendings_path, :notice => "Notebook zurückgegeben"
+          redirect_to lendings_path, :notice => "#{@notebook.nb_name} zurückgegeben"
   end
 end

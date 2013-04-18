@@ -1,14 +1,19 @@
+// Set the correct sprite paths
+//$iconSpritePath: asset-url('glyphicons-halflings.png', image);
+//$iconWhiteSpritePath: asset-url("glyphicons-halflings-white.png", image);
+
 @import "bootstrap";
 body { padding-top: 80px; }
 @import "bootstrap-responsive";
 
  .table {
- margin: 0px;
+ margin: 5px;
  padding: 0px;
+ word-wrap: normal;
+ text-overflow: hidden;
  }
  
  .span5 {
- margin-left: 0px;
  margin-right: 50px;
  margin-bottom: 20px;
 } 
@@ -17,6 +22,7 @@ body { padding-top: 80px; }
  font-weight: bolder;
  color: #DDDDDD;
  text-shadow: none;
+ unselectable: on;
 }
 
  .navbar-inner {
@@ -41,4 +47,12 @@ body { padding-top: 80px; }
  
  .navbar .nav > li > a:focus, .navbar .nav > li > a:hover {
  color: #99CCFF;
+}
+
+.info4 .table th,
+.info4 .table td {
+  padding: 8px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
 }

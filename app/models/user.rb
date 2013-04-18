@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
 
   #Use salt hash for password, needs gem 'bcrypt-ruby'
   has_secure_password 
+  
+  #associations
+  has_many :lendings
 
   #Accessible attributes
   attr_accessible :password, :password_confirmation, :username

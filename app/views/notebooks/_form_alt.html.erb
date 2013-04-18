@@ -1,0 +1,86 @@
+<%= simple_form_for(@notebook, :html => {:class => "form-vertical" }) do |f| %>
+  <% if admin_signed_in? %>
+    <div class="row">
+      <div class="span4">
+      <%= f.association :pool, label_method: :pool_name, :input_html => { :class => "field span3" } %>
+      <%= f.association :location, label_method: :loc_acronym, :input_html => { :class => "field span3" } %>
+      <%= f.input :nb_name, label: "Notebookname", :input_html => { :class => "field span3" } %>
+      <%= f.input :manufactor, label: "Hersteller", :input_html => { :class => "field span3" } %>
+      <%= f.input :nb_type, label: "Modell", :input_html => { :class => "field span3" } %>
+      <%= f.input :serial, label: "Service-Tag", :input_html => { :class => "field span3" } %>
+      <%= f.input :cpu, label: "Prozessor", :input_html => { :class => "field span3" } %>
+      <%= f.input :ram, label: "Arbeitsspeicher", :input_html => { :class => "field span3" } %>    	
+      </div>
+      <div class="span6">
+        <%= f.input :comment, label: "Kommentar", as: :text, :input_html => { :rows => 8, :class => "field span4" } %>
+        <div class="span1">
+          <%= f.submit "Speichern", class: "btn btn-success" %>	
+        </div>
+        
+      </div>
+    </div>
+  <% else %>
+<!-- This messy div-structure is only to force the buttons appearing in the same row using bootstrap, there should be a cleaner way to do this --> 
+    <div class="row">
+    	
+   
+      <div class="span6"> 
+        <div class="row">
+          <div class="span6">
+            <%= f.input :comment, label: "Kommentar", as: :text, :input_html => { :rows => 8, :class => "field span5" } %>
+          </div>
+          <div class="span1">
+            <%= f.submit "Speichern", class: "btn btn-success" %>		
+          </div>
+  <% end %>  
+<% end %>
+          <div class="span1">
+          <% if admin_signed_in? %>
+                 <%= button_to "Abbrechen", notebooks_path, :method => "get", :class => "btn btn-danger" %> 	
+               <% else %>
+                 <%= button_to "Abbrechen", notebook_path, :method => "get", :class => "btn btn-danger" %> 
+               <% end %>    	
+          </div>    	
+        </div>     
+        
+        
+        
+<div class="container">
+	<div class="row">
+	<%= simple_form_for(@notebook, :html => {:class => "form-vertical" }) do |f| %>
+        <% if admin_signed_in? %>
+		<div class="span4">
+			      <%= f.association :pool, label_method: :pool_name, :input_html => { :class => "field span3" } %>
+      <%= f.association :location, label_method: :loc_acronym, :input_html => { :class => "field span3" } %>
+      <%= f.input :nb_name, label: "Notebookname", :input_html => { :class => "field span3" } %>
+      <%= f.input :manufactor, label: "Hersteller", :input_html => { :class => "field span3" } %>
+      <%= f.input :nb_type, label: "Modell", :input_html => { :class => "field span3" } %>
+      <%= f.input :serial, label: "Service-Tag", :input_html => { :class => "field span3" } %>
+      <%= f.input :cpu, label: "Prozessor", :input_html => { :class => "field span3" } %>
+      <%= f.input :ram, label: "Arbeitsspeicher", :input_html => { :class => "field span3" } %>    	
+		</div>
+		<div class="span6">
+			<h3>
+				Span 6
+			</h3>
+			<div class="row">
+				<div class="span6">
+			        <%= f.input :comment, label: "Kommentar", as: :text, :input_html => { :rows => 8, :class => "field span4" } %>
+				</div>
+				<div class="span1">
+			        <%= f.submit "Speichern", class: "btn btn-success" %>	
+				</div>
+				<div class="span1">
+					    <% if admin_signed_in? %>
+                 <%= button_to "Abbrechen", notebooks_path, :method => "get", :class => "btn btn-danger" %> 	
+               <% else %>
+                 <%= button_to "Abbrechen", notebook_path, :method => "get", :class => "btn btn-danger" %> 
+               <% end %>    	
+				</div>
+			</div>
+			<p>
+				Content
+			</p>
+		</div>
+	</div>
+</div>

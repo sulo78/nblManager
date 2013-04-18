@@ -30,38 +30,69 @@
   box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
 
+//State for Notebooks
+
  .available { 
   background-color: #90ee90;
   padding: 10px;
   margin-bottom: 20px;
-  @include rounded-corners(5px);
 }
 
  .islent { 
   background-color: #dc143c;
   padding: 10px;
   margin-bottom: 20px;
-  @include rounded-corners(5px);
 }
+
+//State for Lendings
 
  .intime {
   background-color: lightblue;
   padding: 10px;
-  @include rounded-corners(5px);
   vertical-align: middle;
  
 }
 
  .outtime {
-  background-color: yellow;
+  background-color: #dc143c;
   padding: 10px;
   margin-bottom: 20px;
-  @include rounded-corners(5px);
  
 }
+
+//User Nav at top-right
 
  #user_nav {
   padding-top: 10px;
   text-align: right;
 }
 
+//Width for colums in Lending View
+
+ .info1 {
+ min-width: 130px;
+ break-word: word-wrap;
+}
+
+ .info2 {
+ min-width: 100px;
+ break-word: word-wrap;
+ table td, table th { text-align: center;}
+}
+ 
+ .info3 {
+ min-width: 80px;
+ break-word: word-wrap;
+}
+
+ .info4 {
+ min-width: 50px;
+ break-word: word-wrap;
+}
+
+ .info5 {
+ width: 15px;
+ break-word: word-wrap;
+ background-color: #949CCE;
+ 
+}
