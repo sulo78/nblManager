@@ -34,6 +34,9 @@ link:files/vendor/rails/actionpack/README.html.
 2. Change directory to <tt>myapp</tt> and start the web server:
        <tt>cd myapp; rails server</tt> (run with --help for options)
 
+
+
+
 3. Go to http://localhost:3000/ and you'll see:
        "Welcome aboard: You're riding Ruby on Rails!"
 
@@ -259,3 +262,6 @@ vendor
   External libraries that the application depends on. Also includes the plugins
   subdirectory. If the app has frozen rails, those gems also go here, under
   vendor/rails/. This directory is in the load path.
+
+
+Bye!
